@@ -1,23 +1,31 @@
 NAME = libftprintf.a
-LIB	= libft.a
 
-OBJS = $(SRCS:.c=.o)
+LIB = ar rcs
+
+SRC = ft_aux.c ft_printf.c ft_putvar.c ft_putnbr_base_pf.c ft_aux2.c ft_testing.c
+
+OBJ = $(SRC:.c=.o)
+
+CC = gcc
+
+CFLAGS = -Werror -Wall -Wextra
+
+RM = rm -f
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
 
 all: $(NAME)
 
-$(NAME): $(LIB)
-	@gcc -Wall -Wextra -Werror -c *.c
-	@ar -q $(NAME) *.o 
-
-$(LIB):
-	@gcc -c -Wall -Werror -Wextra C:\Users\Usuario\Desktop\DAW\Proyectos\libftpro\*.c -I C:\Users\Usuario\Desktop\DAW\Proyectos\libftpro\libft.h
-	@ar -q C:\Users\Usuario\Desktop\DAW\Proyectos\libftpro\$(LIB) *.o
+$(NAME): $(OBJ)
+	$(LIB) $(NAME) $(OBJ)
 
 clean:
-	@rm -rf *.o C:\Users\Usuario\Desktop\DAW\Proyectos\libftpro\*.o
+	$(RM) $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@rm -rf C:\Users\Usuario\Desktop\DAW\Proyectos\libftpro\$(LIB)
+	$(RM) $(NAME)
 
-re: fclean $(LIB) all
+re: fclean all
+
+.PHONY:	all clean fclean re libft

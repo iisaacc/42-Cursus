@@ -14,24 +14,22 @@
 
 void	ft_putvar(va_list var, char c, int *n)
 {
-	if (c == 'd')
-		ft_putnbr(va_arg(var, float));
+	if (c == 'd' || c == 'i')
+		n += ft_putnbr_pf(va_arg(var, int));
 	else if (c == 's')
-		ft_putstr(va_arg(var, char *));
+		n += ft_putstr_pf(va_arg(var, char *));
 	else if (c == 'c')
-		ft_putchar(va_arg(var, char));
+		n += ft_putchar_pf(va_arg(var, int));
 	else if (c == 'x')
-		ft_putnbr_base(va_arg(var, char *), "0123456789abcdef");
+		n += ft_putnbr_base(va_arg(var, int), "0123456789abcdef");
 	else if (c == 'X')
-		ft_putnbr_base(va_arg(var, char *), "0123456789ABCDEF");
+		n += ft_putnbr_base(va_arg(var, int), "0123456789ABCDEF");
 	else if (c == 'o')
-		ft_putnbr_base(va_arg(var, char *), "01234567");
+		n += ft_putnbr_base(va_arg(var, int), "01234567");
 	else if (c == 'u')
-		ft_putnbr_unsigned(va_arg(var, unsigned int *));
-	else if (c == 'i')
-		ft_putnbr(var);
-	else if (c == 'p')
-		ft_putnbr(var);
+		n += ft_putnbr_unsigned_pf(va_arg(var, unsigned int));
+	//else if (c == 'p')
+	//	n += ft_putptrhex(va_arg(var, unsigned int));
 	else if (c == '%')
-		ft_putchar('%');
+		n += ft_putchar_pf('%');
 }

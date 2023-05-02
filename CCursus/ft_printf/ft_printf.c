@@ -29,10 +29,7 @@ int	ft_printf(char const *str, ...)
 			str++;
 		}
 		else
-		{
-			ft_putchar(*str);
-			n++;
-		}
+			n += ft_putchar_pf(*str);
 		str++;
 	}
 	va_end(var);
