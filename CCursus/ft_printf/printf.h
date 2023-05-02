@@ -1,7 +1,9 @@
-#include <libft.h>
-#include <stdarg.h>
+#ifndef PRINTF_H
+# define PRINTF_H
+# include <libft.h>
+# include <stdarg.h>
 
-struct s_types
+struct	s_types
 {
 	long			i;
 	char			c;
@@ -12,4 +14,7 @@ struct s_types
 	char			*X;
 };
 
-int	ft_printf(char const *str, ...);
+int		ft_printf(char const *str, ...);
+void	ft_putvar(va_list var, char c, int *n);
+
+#endif
