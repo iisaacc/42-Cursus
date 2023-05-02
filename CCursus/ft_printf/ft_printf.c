@@ -22,4 +22,4 @@ int	ft_printf(char const *str, ...)
 	va_end(var);
 	return (n);
 }
-//hola
+//hola k diuse
