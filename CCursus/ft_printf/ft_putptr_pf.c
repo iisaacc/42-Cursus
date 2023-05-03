@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_aux2.c                                          :+:      :+:    :+:   */
+/*   ft_putptr_pf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isporras <isporras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:22:23 by isporras          #+#    #+#             */
-/*   Updated: 2023/05/02 18:36:19 by isporras         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:44:16 by isporras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_unsigned_pf(int arg)
+void	ft_putptr_pf(uintptr_t ptr, char *base, int *n)
 {
-	int				n;
-	char			c;
-	unsigned int	num;
+	int	div;
 
-	n = countn(arg);
-	num = n;
-	if (num > 9)
-		ft_putnbr_pf(num / 10);
-	c = '0' + num % 10;
-	write(1, &c, 1);
-	return (n);
+	div = 16;
+	if (ptr < 16)
+		*n += ft_putchar_pf(base[ptr]);
+	else
+	{
+		ft_putptr_pf(ptr / div, base, n);
+		*n += ft_putchar_pf(base[ptr % div]);
+	}
 }
-

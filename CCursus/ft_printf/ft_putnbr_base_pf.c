@@ -6,72 +6,26 @@
 /*   By: isporras <isporras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:36:31 by isporras          #+#    #+#             */
-/*   Updated: 2023/05/02 18:37:06 by isporras         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:46:59 by isporras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-int	test_base(char *str)
-{
-	int	x;
-	int	y;
-
-	if (str[0] == '\0' || ft_strlen(str) == 1)
-		return (1);
-	x = 0;
-	while (str[x] != '\0')
-	{
-		if (str[x] == '+' || str[x] == '-' || str[x] < 33)
-			return (1);
-		y = x + 1;
-		while (str[y] != '\0')
-		{
-			if (str[x] == str[y])
-				return (1);
-			y++;
-		}
-		x++;
-	}
-	return (0);
-}
-
-void	ft_recurs(unsigned int div, unsigned int nbr, char *base, int *count)
-{
-	if (nbr < div)
-		ft_putchar(base[nbr]);
-	if (nbr >= div)
-	{
-		*count += 1;
-		ft_recurs(div, nbr / div, base, count);
-		ft_putchar(base[nbr % div]);
-	}
-}
-
-int	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(int nbr, char *base, int *n)
 {
 	unsigned int	div;
-	unsigned int	n;
-	int				count;
+	unsigned int	num;
 
-	count = 0;
-	if (test_base(base) == 0)
+	if (nbr < 0)
+		num = -nbr;
+	div = 16;
+	num = nbr;
+	if (num < 16)
+		*n += ft_putchar_pf(base[num]);
+	else
 	{
-		if (nbr < 0)
-		{
-			n = -nbr;
-			ft_putchar('-');
-			count++;
-		}
-		else
-			n = nbr;
-		div = ft_strlen(base);
-		ft_recurs(div, n, base, &count);
+		ft_putnbr_base(nbr / div, base, n);
+		*n += ft_putchar_pf(base[nbr % div]);
 	}
-	return (count);
 }

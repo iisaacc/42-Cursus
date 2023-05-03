@@ -15,17 +15,17 @@
 int	ft_printf(char const *str, ...)
 {
 	va_list	var;
-	int		n; // Nº de carácteres imprimidos (return)
+	int		n;
 
 	if (!str)
 		return (0);
 	n = 0;
-	va_start(var, str);// Inicialización de lista de variables
+	va_start(var, str);
 	while (*str)
 	{
 		if (*str == '%')
 		{
-			ft_putvar(var, *(str + 1), &n); // Función que redirecciona a la función que corresponda según tipo
+			ft_putvar(var, *(str + 1), &n);
 			str++;
 		}
 		else

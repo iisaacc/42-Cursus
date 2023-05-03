@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 LIB = ar rcs
 
-SRC = ft_aux.c ft_printf.c ft_putvar.c ft_putnbr_base_pf.c ft_aux2.c
+SRC = ft_aux.c ft_printf.c ft_putvar.c ft_putnbr_base_pf.c ft_putptr_pf.c
 
 LIBFT = ./libft/libft.a
 
