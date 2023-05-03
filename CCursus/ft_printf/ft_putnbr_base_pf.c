@@ -6,11 +6,11 @@
 /*   By: isporras <isporras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:36:31 by isporras          #+#    #+#             */
-/*   Updated: 2023/05/02 15:38:51 by isporras         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:37:06 by isporras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static void	ft_putchar(char c)
 {

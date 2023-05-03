@@ -6,29 +6,11 @@
 /*   By: isporras <isporras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 13:08:35 by isporras          #+#    #+#             */
-/*   Updated: 2023/05/02 17:28:47 by isporras         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:16:09 by isporras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	countn(long n)
-{
-	int	len;
-
-	len = 0;
-	if (n < 0)
-	{
-		len++;
-		n *= -1;
-	}
-	while (n > 9)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len + 1);
-}
 
 char	*ft_itoa(int n)
 {

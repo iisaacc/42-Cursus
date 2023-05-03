@@ -6,29 +6,11 @@
 /*   By: isporras <isporras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:13:40 by isporras          #+#    #+#             */
-/*   Updated: 2023/05/02 17:45:44 by isporras         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:36:14 by isporras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
-//int	countn(long n)
-//{
-//	int	len;
-
-//	len = 0;
-//	if (n < 0)
-//	{
-//		len++;
-//		n *= -1;
-//	}
-//	while (n > 9)
-//	{
-//		n /= 10;
-//		len++;
-//	}
-//	return (len + 1);
-//}
+#include "ft_printf.h"
 
 int	ft_putnbr_pf(int arg)
 {
@@ -53,10 +35,15 @@ int	ft_putnbr_pf(int arg)
 
 int	ft_putunsigned_pf (unsigned int arg)
 {
-	int	n;
+	int		n;
+	char	c;
 
-	ft_putnbr_pf(arg);
-	n = countn(arg);
+	n = 0;
+	if (arg > 9)
+		ft_putunsigned_pf(arg / 10);
+	n++;
+	c = '0' + arg % 10;
+	write(1, &c, 1);
 	return (n);
 }
 
@@ -65,6 +52,7 @@ int	ft_putstr_pf(char *s)
 	write(1, s, ft_strlen(s));
 	return (ft_strlen(s));
 }
+
 int	ft_putchar_pf (char arg)
 {
 	write(1, &arg, 1);

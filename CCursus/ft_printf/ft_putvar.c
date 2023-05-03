@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putvar(va_list var, char c, int *n)
 {
@@ -27,7 +27,7 @@ void	ft_putvar(va_list var, char c, int *n)
 	else if (c == 'o')
 		n += ft_putnbr_base(va_arg(var, int), "01234567");
 	else if (c == 'u')
-		n += ft_putnbr_unsigned_pf(va_arg(var, unsigned int));
+		n += ft_putunsigned_pf(va_arg(var, unsigned int));
 	//else if (c == 'p')
 	//	n += ft_putptrhex(va_arg(var, unsigned int));
 	else if (c == '%')
