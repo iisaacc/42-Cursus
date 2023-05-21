@@ -12,41 +12,47 @@
 
 #include "push_swap.h"
 
-int	*ft_argvtoint(int argc, char *argv)
+int	*ft_argvtoint(int argc, char **argv)
 {
-	char	**split;
 	int		*stack;
 	int		i;
 
-	stack = ft_calloc(sizeof(int), (argc - 1));
-	split = ft_split(argv, ' ');
+	stack = ft_calloc((argc - 1),sizeof(int));
 	i = 0;
 	while (i < argc - 1)
 	{
-		printf("split: %s\n", split[i]);
+		stack[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
-	i = 0;
-	while (i < argc - 1)
-	{
-		stack[i] = ft_atoi(split[i]);
-		i++;
-	}
+	stack[i] = NULL;
 	return (stack);
 }
 
-int	main(int argc, char *argv)
+int	ft_arraytolist(int *stack)
+{
+	int		i;
+	t_stack	**list;
+
+	list = ft_lstnew(stack[0]);
+	i = 1;
+	while (stack[i])
+	{
+		ft_lstadd_back(list, stack[i]);
+		i++;
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
 {
 	int	*stack_a;
 	int	i;
-
-	printf("argc: %d\n", argc);
-	stack_a = ft_argvtoint(argc, argv);
 	i = 0;
-	while (stack_a && i < argc - 1)
+	if (ft_checkerror(argc, argv) == 1)
+		write(1, "Error\n", 6);
+	else
 	{
-		printf("%d\n", stack_a[i]);
-		i++;
+		stack_a = ft_argvtoint(argc, argv);
 	}
 	return (0);
 }
