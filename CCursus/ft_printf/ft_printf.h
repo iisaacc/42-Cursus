@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <stdint.h>
 
 int		ft_printf(char const *str, ...);
 void	ft_putvar(va_list var, char c, int *n);
