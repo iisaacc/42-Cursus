@@ -23,6 +23,12 @@ int	*ft_argvtoint(int argc, char *argv)
 	i = 0;
 	while (i < argc - 1)
 	{
+		printf("split: %s\n", split[i]);
+		i++;
+	}
+	i = 0;
+	while (i < argc - 1)
+	{
 		stack[i] = ft_atoi(split[i]);
 		i++;
 	}
@@ -32,7 +38,6 @@ int	*ft_argvtoint(int argc, char *argv)
 int	main(int argc, char *argv)
 {
 	int	*stack_a;
-	int	*stack_b;
 	int	i;
 
 	printf("argc: %d\n", argc);
